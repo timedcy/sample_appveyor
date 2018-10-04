@@ -21,8 +21,6 @@ cache:
   - C:\projects\sample_appveyor\opencv_contrib -> appveyor_cache.txt
   
 init:
-- cmd: dir %APPVEYOR_BUILD_FOLDER%\build
-
 - cmd: cmake --version
 - cmd: msbuild /version
 - echo %arch%
