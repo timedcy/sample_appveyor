@@ -5,11 +5,11 @@ environment:
   matrix:
     - generator: "Visual Studio 14 2015" 
 
-#configuration:
-#- Release
+configuration:
+- Release
 
-#platform:
-#- "Any CPU"
+platform:
+- Win64
 
 matrix:
   fast_finish: true
