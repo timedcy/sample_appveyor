@@ -4,7 +4,6 @@ image:
 environment:
   matrix:
     - generator: "Visual Studio 14 2015" 
-    - arch: Win64 
 
 configuration:
 - Release
