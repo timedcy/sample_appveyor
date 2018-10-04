@@ -44,17 +44,13 @@ before_build:
 - cmd: SET PATH=C:\ant\apache-ant-1.10.5\bin;%JAVA_HOME%\bin;%PATH%
 - cmd: java -version
 
+- cmd: |-
+    echo submodule sync 
+    git submodule sync
+    git submodule update --init --recursive opencv
+    git submodule update --init --recursive opencv_contrib
+    echo 'submodule sync done'
 
-- cmd: |
-    IF EXIST %APPVEYOR_BUILD_FOLDER%/opencv_contrib/modules (
-        echo submodule exist
-    ) ELSE (
-        echo submodule sync 
-        git submodule sync
-        git submodule update --init --recursive opencv
-        git submodule update --init --recursive opencv_contrib
-        echo 'submodule sync done'
-    )
 
 - cmd: |-
     dir %APPVEYOR_BUILD_FOLDER%\opencv
