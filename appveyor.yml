@@ -9,7 +9,7 @@ environment:
 #- Release
 
 platform:
-- x64
+- "Any CPU"
 
 matrix:
   fast_finish: true
