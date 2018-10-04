@@ -30,9 +30,11 @@ init:
 
 before_build:
 - cmd: |-
+    git submodule sync
+    git submodule update --init --recursive opencv
+    cmake --version
     mkdir build
     cd build
-    cmake --version
     cmake ../opencv -G %generator%
 
 build:
