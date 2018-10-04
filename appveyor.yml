@@ -56,7 +56,11 @@ before_build:
         echo 'already submodule sync'
     }
 
-    
+- cmd: |-
+    dir %APPVEYOR_BUILD_FOLDER%\opencv
+    dir %APPVEYOR_BUILD_FOLDER%\opencv_contrib
+
+
 - cmd: |-
     mkdir build
     cd build
