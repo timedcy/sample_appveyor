@@ -69,7 +69,7 @@ before_build:
     dir %APPVEYOR_BUILD_FOLDER%\build
     
 build:
- project: c:\projects\sample_appveyor\build\OpenCV.sln
+ project: C:\projects\sample-appveyor\build\OpenCV.sln
  parallel: true
  
 before_test:
