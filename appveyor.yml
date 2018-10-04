@@ -34,7 +34,7 @@ before_build:
     mkdir build
     cd build
     cmake --version
-    cmake .. -G %generator%
+    cmake ../opencv -G %generator%
 
 build:
   project: c:\projects\sample_appveyor\build\template.sln
