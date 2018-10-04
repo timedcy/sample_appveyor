@@ -67,6 +67,8 @@ before_build:
     cmake --version
     cmake -DBUILD_opencv_apps=OFF -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_DOCS=OFF -DOPENCV_EXTRA_MODULES_PATH=%APPVEYOR_BUILD_FOLDER%\opencv_contrib\modules -DOPENCV_ENABLE_NONFREE=ON ../opencv -G %generator% 
     dir %APPVEYOR_BUILD_FOLDER%\build
+    cmake ../opencv -G %generator%
+
 
 #build:
 #  project: c:\projects\sample_appveyor\build\opencv.sln
