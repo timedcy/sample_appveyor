@@ -45,16 +45,16 @@ before_build:
 - cmd: java -version
 
 
-- ps: |
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    if (!(Test-Path -Path "${env:APPVEYOR_BUILD_FOLDER}/opencv_contrib/modules" )) {
+- cmd: |
+    IF EXIST "${env:APPVEYOR_BUILD_FOLDER}/opencv_contrib/modules" (
+        echo submodule exist
+    ) ELSE (
+        echo submodule sync 
         git submodule sync
         git submodule update --init --recursive opencv
         git submodule update --init --recursive opencv_contrib
         echo 'submodule sync done'
-    } else {
-        echo 'already submodule sync'
-    }
+    )
 
 - cmd: |-
     dir %APPVEYOR_BUILD_FOLDER%\opencv
