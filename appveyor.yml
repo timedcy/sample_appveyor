@@ -15,7 +15,9 @@ matrix:
   fast_finish: true
   
 cache:
-  - C:\ProgramData\chocolatey -> appveyor_cache.txt
+  - %APPVEYOR_BUILD_FOLDER%\build -> appveyor_cache.txt
+  - %APPVEYOR_BUILD_FOLDER%\opencv -> appveyor_cache.txt
+  - %APPVEYOR_BUILD_FOLDER%\opencv_contrib -> appveyor_cache.txt
   
 init:
 - cmd: cmake --version
@@ -29,15 +31,42 @@ init:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
 
 before_build:
+- ps: |
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    if (!(Test-Path -Path "C:\ant\apache-ant-1.10.5" )) {
+        (new-object System.Net.WebClient).DownloadFile(
+        'https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.5-bin.zip',
+          'C:\ant-bin.zip'
+        )
+        [System.IO.Compression.ZipFile]::ExtractToDirectory("C:\ant-bin.zip", "C:\ant")
+        echo 'download ant done'
+    }
+- cmd: SET PATH=C:\ant\apache-ant-1.10.5\bin;%JAVA_HOME%\bin;%PATH%
+- cmd: java -version
+
+
+- ps: |
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    if (!(Test-Path -Path "${env:APPVEYOR_BUILD_FOLDER}/opencv_contrib/modules" )) {
+        git submodule sync
+        git submodule update --init --recursive opencv
+        git submodule update --init --recursive opencv_contrib
+        echo 'submodule sync done'
+    } else {
+        echo 'already submodule sync'
+    }
+
+    
 - cmd: |-
     mkdir build
     cd build
     cmake --version
-    cmake ../opencv -G %generator%
+    cmake -DBUILD_opencv_apps=OFF -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_DOCS=OFF -DOPENCV_EXTRA_MODULES_PATH=%APPVEYOR_BUILD_FOLDER%\opencv_contrib\modules -DOPENCV_ENABLE_NONFREE=ON ../opencv -G %generator% 
+    dir %APPVEYOR_BUILD_FOLDER%\build
 
-build:
-  project: c:\projects\sample_appveyor\build\template.sln
-  parallel: true
+#build:
+#  project: c:\projects\sample_appveyor\build\opencv.sln
+#  parallel: true
  
 before_test:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
