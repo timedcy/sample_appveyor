@@ -15,9 +15,9 @@ matrix:
   fast_finish: true
   
 cache:
-  - %APPVEYOR_BUILD_FOLDER%\build -> appveyor_cache.txt
-  - %APPVEYOR_BUILD_FOLDER%\opencv -> appveyor_cache.txt
-  - %APPVEYOR_BUILD_FOLDER%\opencv_contrib -> appveyor_cache.txt
+  - C:\projects\sample_appveyor\build -> appveyor_cache.txt
+  - C:\projects\sample_appveyor\opencv -> appveyor_cache.txt
+  - C:\projects\sample_appveyor\opencv_contrib -> appveyor_cache.txt
   
 init:
 - cmd: cmake --version
