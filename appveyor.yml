@@ -27,9 +27,9 @@ init:
 - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" ( set generator="Visual Studio 14 2015%arch%" )
 - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2013" ( set generator="Visual Studio 12 2013%arch%" )
 - echo %generator%
+- cmd: dir %APPVEYOR_BUILD_FOLDER%
 
 before_build:
-- cmd: dir %APPVEYOR_BUILD_FOLDER%
 - cmd: |-
     mkdir build
     cd build
