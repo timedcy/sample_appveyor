@@ -46,7 +46,7 @@ before_build:
 
 
 - cmd: |
-    IF EXIST "${env:APPVEYOR_BUILD_FOLDER}/opencv_contrib/modules" (
+    IF EXIST "%APPVEYOR_BUILD_FOLDER%/opencv_contrib/modules" (
         echo submodule exist
     ) ELSE (
         echo submodule sync 
