@@ -5,8 +5,8 @@ environment:
   matrix:
     - generator: "Visual Studio 14 2015" 
 
-configuration:
-- Release
+#configuration:
+#- Release
 
 platform:
 - x64
