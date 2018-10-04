@@ -15,11 +15,14 @@ matrix:
   fast_finish: true
   
 cache:
+  - C:\ant\apache-ant-1.10.5 -> appveyor_cache.txt
   - C:\projects\sample_appveyor\build -> appveyor_cache.txt
   - C:\projects\sample_appveyor\opencv -> appveyor_cache.txt
   - C:\projects\sample_appveyor\opencv_contrib -> appveyor_cache.txt
   
 init:
+- cmd: dir %APPVEYOR_BUILD_FOLDER%\build
+
 - cmd: cmake --version
 - cmd: msbuild /version
 - echo %arch%
@@ -70,3 +73,4 @@ build:
  
 before_test:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
+- cmd: dir %APPVEYOR_BUILD_FOLDER%\build
