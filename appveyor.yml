@@ -41,13 +41,17 @@ before_build:
     }
 - cmd: SET PATH=C:\ant\apache-ant-1.10.5\bin;%JAVA_HOME%\bin;%PATH%
 - cmd: java -version
+- cmd: dir C:\projects\sample_appveyor\build\lib
+- cmd: dir C:\projects\sample_appveyor\build\win-install
+- cmd: dir C:\projects\sample_appveyor\build\bin
+- cmd: dir C:\projects\sample_appveyor\build\x64
 
-- cmd: |-
-    echo submodule sync 
-    git submodule sync
-    git submodule update --init --recursive opencv
-    git submodule update --init --recursive opencv_contrib
-    echo 'submodule sync done'
+# - cmd: |-
+#     echo submodule sync 
+#     git submodule sync
+#     git submodule update --init --recursive opencv
+#     git submodule update --init --recursive opencv_contrib
+#     echo 'submodule sync done'
 
 
 - cmd: |-
@@ -55,15 +59,15 @@ before_build:
     dir %APPVEYOR_BUILD_FOLDER%\opencv_contrib
 
 
-- cmd: |-
-    mkdir build
-    cd build
-    cmake --version
-    cmake -DBUILD_opencv_apps=OFF -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_DOCS=OFF -DOPENCV_EXTRA_MODULES_PATH=%APPVEYOR_BUILD_FOLDER%\opencv_contrib\modules -DOPENCV_ENABLE_NONFREE=ON ../opencv -G %generator% 
-    dir %APPVEYOR_BUILD_FOLDER%\build
+# - cmd: |-
+#     mkdir build
+#     cd build
+#     cmake --version
+#     cmake -DBUILD_opencv_apps=OFF -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_DOCS=OFF -DOPENCV_EXTRA_MODULES_PATH=%APPVEYOR_BUILD_FOLDER%\opencv_contrib\modules -DOPENCV_ENABLE_NONFREE=ON ../opencv -G %generator% 
+#     dir %APPVEYOR_BUILD_FOLDER%\build
 
-build_script:
-    - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Rebuild /p:Configuration=Release;Platform=x64 /m
+# build_script:
+#     - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Rebuild /p:Configuration=Release;Platform=x64 /m
         
 # build:
 #  project: C:\projects\sample-appveyor\build\OpenCV.sln
