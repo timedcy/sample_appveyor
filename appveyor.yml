@@ -7,7 +7,8 @@ environment:
 
 configuration: Release
 
-platform: Any CPU
+platform:
+  - x64
 
 matrix:
   fast_finish: true
@@ -62,11 +63,15 @@ before_build:
     cmake --version
     cmake -DBUILD_opencv_apps=OFF -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_DOCS=OFF -DOPENCV_EXTRA_MODULES_PATH=%APPVEYOR_BUILD_FOLDER%\opencv_contrib\modules -DOPENCV_ENABLE_NONFREE=ON ../opencv -G %generator% 
     dir %APPVEYOR_BUILD_FOLDER%\build
-    
-build:
- project: C:\projects\sample-appveyor\build\OpenCV.sln
- parallel: true
- verbosity: minimal
+
+build_script:
+    - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Build /p:Configuration=Release;Platform=x64 /m
+        
+# build:
+#  project: C:\projects\sample-appveyor\build\OpenCV.sln
+#  parallel: true
+#  verbosity: minimal
+ 
  
 before_test:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
