@@ -12,9 +12,9 @@ matrix:
   
 cache:
   - C:\ant\apache-ant-1.10.5 -> appveyor_cache.txt
-  - %APPVEYOR_BUILD_FOLDER%\build -> appveyor_cache.txt
-  - %APPVEYOR_BUILD_FOLDER%\opencv -> appveyor_cache.txt
-  - %APPVEYOR_BUILD_FOLDER%\opencv_contrib -> appveyor_cache.txt
+  - C:\projects\sample-appveyor\build -> appveyor_cache.txt
+  - C:\projects\sample-appveyor\opencv -> appveyor_cache.txt
+  - C:\projects\sample-appveyor\opencv_contrib -> appveyor_cache.txt
   
 init:
 - cmd: cmake --version
