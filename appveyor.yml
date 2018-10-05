@@ -67,11 +67,11 @@ build_script:
     - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Rebuild /p:Configuration=Release;Platform=x64 /m
 
 artifacts:
-- path: %APPVEYOR_BUILD_FOLDER%\build\lib\Release\*.dll
+- path: build\lib\Release\*.dll
    name: dll
-- path: %APPVEYOR_BUILD_FOLDER%\build\bin\*.jar
+- path: build\bin\*.jar
    name: jar
-- path: %APPVEYOR_BUILD_FOLDER%\build\bin\Release\*.dll
+- path: build\bin\Release\*.dll
    name: ffmpeg
 
 before_test:
