@@ -65,10 +65,7 @@ before_build:
 
 build_script:
     - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Rebuild /p:Configuration=Release;Platform=x64 /m
-    - cmd: dir C:\projects\sample_appveyor\build\lib
-    - cmd: dir C:\projects\sample_appveyor\build\win-install
-    - cmd: dir C:\projects\sample_appveyor\build\bin
-    - cmd: dir C:\projects\sample_appveyor\build\x64
+
         
 # build:
 #  project: C:\projects\sample-appveyor\build\OpenCV.sln
@@ -79,3 +76,8 @@ build_script:
 before_test:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
 - cmd: dir %APPVEYOR_BUILD_FOLDER%\build
+- cmd: dir C:\projects\sample_appveyor\build\lib
+- cmd: dir C:\projects\sample_appveyor\build\win-install
+- cmd: dir C:\projects\sample_appveyor\build\bin
+- cmd: dir C:\projects\sample_appveyor\build\x64
+
