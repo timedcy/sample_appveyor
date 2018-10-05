@@ -5,11 +5,9 @@ environment:
   matrix:
     - generator: "Visual Studio 14 2015" 
 
-configuration:
-- Release
+configuration: Release
 
-platform:
-- Win64
+platform: Any CPU
 
 matrix:
   fast_finish: true
@@ -68,6 +66,7 @@ before_build:
 build:
  project: C:\projects\sample-appveyor\build\OpenCV.sln
  parallel: true
+ verbosity: minimal
  
 before_test:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
