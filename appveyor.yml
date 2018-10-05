@@ -76,8 +76,8 @@ build_script:
 before_test:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
 - cmd: dir %APPVEYOR_BUILD_FOLDER%\build
-- cmd: dir C:\projects\sample_appveyor\build\lib
-- cmd: dir C:\projects\sample_appveyor\build\win-install
-- cmd: dir C:\projects\sample_appveyor\build\bin
-- cmd: dir C:\projects\sample_appveyor\build\x64
+- cmd: dir %APPVEYOR_BUILD_FOLDER%\build\lib
+- cmd: dir %APPVEYOR_BUILD_FOLDER%\build\win-install
+- cmd: dir %APPVEYOR_BUILD_FOLDER%\build\bin
+- cmd: dir %APPVEYOR_BUILD_FOLDER%\build\x64
 
