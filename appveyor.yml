@@ -65,7 +65,7 @@ before_build:
     dir %APPVEYOR_BUILD_FOLDER%\build
 
 build_script:
-    - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Build /p:Configuration=Release;Platform=x64 /m
+    - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Build /p:Configuration=Release;Platform="Any CPU" /m
         
 # build:
 #  project: C:\projects\sample-appveyor\build\OpenCV.sln
