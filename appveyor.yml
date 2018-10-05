@@ -68,11 +68,11 @@ build_script:
 
 artifacts:
 - path: build\lib\Release\*.dll
-   name: dll
+  name: dll
 - path: build\bin\*.jar
-   name: jar
+  name: jar
 - path: build\bin\Release\*.dll
-   name: ffmpeg
+  name: ffmpeg
 
 before_test:
 - cmd: dir %APPVEYOR_BUILD_FOLDER%
