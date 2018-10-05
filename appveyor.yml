@@ -3,13 +3,10 @@ image:
 
 environment:
   matrix:
-    - generator: "Visual Studio 14 2015" 
+    - generator: "Visual Studio 14 2015 Win64" 
 
 configuration: Release
-
-platform:
-  - x64
-
+ 
 matrix:
   fast_finish: true
   
@@ -65,7 +62,7 @@ before_build:
     dir %APPVEYOR_BUILD_FOLDER%\build
 
 build_script:
-    - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Build /p:Configuration=Release;Platform="Any CPU" /m
+    - cmd: msbuild C:\projects\sample-appveyor\build\OpenCV.sln /t:Rebuild /p:Configuration=Release;Platform=x64 /m
         
 # build:
 #  project: C:\projects\sample-appveyor\build\OpenCV.sln
