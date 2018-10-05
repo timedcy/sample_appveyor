@@ -10,7 +10,8 @@ configuration: Release
 matrix:
   fast_finish: true
 
-arch: Win64
+arch: 
+  - Win64
   
 cache:
   - C:\ant\apache-ant-1.10.5 -> appveyor_cache.txt
